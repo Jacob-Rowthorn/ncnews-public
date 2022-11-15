@@ -62,6 +62,6 @@ describe (`/api/topics`, () => {
     test(`GET - 404: invalid paths return nothing`, () => {
         return request(app)
             .get(`/api/oifjweiofjawoeif`)
-            .expect(404)
+            .expect(404);
     })
 })
