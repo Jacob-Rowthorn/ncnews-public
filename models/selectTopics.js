@@ -1,6 +1,6 @@
 const db = require(`../db/connection.js`);
 
-function selectArticles() {
+function selectTopics() {
     const query = `
     SELECT * FROM topics
     `
@@ -9,4 +9,4 @@ function selectArticles() {
     })
 }
 
-module.exports = {selectArticles}
+module.exports = {selectTopics}

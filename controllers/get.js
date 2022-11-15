@@ -1,8 +1,8 @@
-const {selectArticles} = require(`../models/selectArticles.js`);
+const {selectTopics} = require(`../models/selectTopics.js`);
 
 function getTopics (req, res, next) {
-    selectArticles().then((articles) => {
-        res.status(200).send({topics: articles});
+    selectTopics().then((resTopics) => {
+        res.status(200).send({topics: resTopics});
     }).catch((err) => {
         next(err)
     })
