@@ -1,6 +1,6 @@
 const {selectArticles} = require(`../models/selectArticles.js`);
 
-function getNewsData (req, res, next) {
+function getTopics (req, res, next) {
     selectArticles().then((articles) => {
         res.status(200).send(articles);
     }).catch((err) => {
@@ -8,4 +8,4 @@ function getNewsData (req, res, next) {
     })
 }
 
-module.exports = {getNewsData}
+module.exports = {getTopics}
