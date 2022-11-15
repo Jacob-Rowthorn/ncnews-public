@@ -13,13 +13,13 @@ afterAll(() => {
 })
 
 describe (`/api/topics`, () => {
-    test(`GET - 200: objects contain keys for slug and description`, () => {
+    test(`GET - 200: objects exist and contain keys for slug and description`, () => {
         return request(app)
             .get(`/api/topics`)
             .expect(200)
             .then((res) => {
-                res.body.length = 3;
-                res.body.forEach((topic) => {
+                expect(res.body.topics.length).toBe(3);
+                res.body.topics.forEach((topic) => {
                     expect(topic).toMatchObject({
                         slug: expect.any(String),
                         description: expect.any(String)
