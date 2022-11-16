@@ -22,11 +22,7 @@ function selectArticles() {
         ON articles.article_id = comments.comment_id
     ORDER BY articles.created_at DESC
     `
-    //SORT BY created_at DESC
-    
-    //console.log(query)
     return db.query(query).then((res) => {
-        console.log(res)
         return res.rows
     })
 }

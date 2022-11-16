@@ -11,7 +11,6 @@ function getTopics (req, res, next) {
 
 function getArticles (req, res, next) {
     selectArticles().then((resArticles) => {
-        console.log(resArticles)
         res.status(200).send({articles: resArticles});
     }).catch((err) => {
         next(err)
