@@ -3,7 +3,7 @@ const db = require(`../db/connection.js`);
 function selectArticles() {
     const query = `
     SELECT
-        users.username AS author,
+        articles.author,
             (
                 SELECT
                 COUNT(comments.comment_id) AS comment_count
@@ -16,10 +16,6 @@ function selectArticles() {
         articles.article_id,
         articles.votes
     FROM articles
-    INNER JOIN users
-        ON articles.author = users.username
-    INNER JOIN comments
-        ON articles.article_id = comments.comment_id
     ORDER BY articles.created_at DESC
     `
     return db.query(query).then((res) => {
