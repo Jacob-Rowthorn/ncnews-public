@@ -34,3 +34,34 @@ describe (`/api/topics`, () => {
             .expect(404);
     })
 })
+
+describe (`/api/articles`, () => {
+    test(`GET - 200: articles contain all proper fields`, () => {
+        return request(app)
+            .get(`/api/articles`)
+            .expect(200)
+            .then((res) => {
+                expect(res.body.articles.length).toBe(12);
+                res.body.articles.forEach((article) => {
+                    expect(article).toMatchObject({
+                        author: expect.any(String),
+                        title: expect.any(String),
+                        article_id: expect.any(Number),
+                        topic: expect.any(String),
+                        created_at:expect.any(String),
+                        votes: expect.any(Number),
+                        comment_count: expect.any(String)
+                    })
+                })
+            })
+    })
+
+    test(`GET - 200: articles are sorted by date`, () => {
+        return request(app)
+            .get(`/api/articles`)
+            .expect(200)
+            .then((res) => {
+                expect(res.body.articles).toBeSortedBy('created_at', {descending: true})
+            })
+    })
+})
